@@ -3,8 +3,7 @@ package academia.model;
 public class Modalidade {
 
 	private long idModalidade;
-	private String nome;
-	
+	private String nome;	
 	
 	
 	

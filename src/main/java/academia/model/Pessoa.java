@@ -6,7 +6,7 @@ public class Pessoa {
 	
 	private long id;
 	private String nome;
-	private LocalDate dataDascimento;
+	private LocalDate dataNascimento;
 	private String endereco;
 	private String telefone;
 	private String email;
@@ -24,11 +24,11 @@ public class Pessoa {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public LocalDate getDataDascimento() {
-		return dataDascimento;
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
 	}
-	public void setDataDascimento(LocalDate dataDascimento) {
-		this.dataDascimento = dataDascimento;
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 	public String getEndereco() {
 		return endereco;
