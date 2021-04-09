@@ -5,7 +5,6 @@
 
 ### Projeto da faculdade
 
- * Linguagem: Java
 * **Linguagem: Java**
    * implementado 
 
