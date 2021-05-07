@@ -2,9 +2,7 @@ package academia.model;
 
 import java.util.List;
 
-public class Professor extends Pessoa
-
-	{
+public class Professor extends Pessoa{
 
 	private long idProfessor;
 

@@ -1,6 +1,6 @@
 package academia.model;
 
-public class Aluno {
+public class Aluno extends Pessoa{
 	
 	private long idAluno;
 	private int funcao;

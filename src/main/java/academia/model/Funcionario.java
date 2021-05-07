@@ -1,8 +1,8 @@
 package academia.model;
 
-public class Funcionario {
+public class Funcionario extends Pessoa {
 
-	private long id;
+	private int id;
 	private String funcao;
 	private String descFuncao;
 	
@@ -11,10 +11,10 @@ public class Funcionario {
 	public Funcionario() {
 		super();
 	}
-	public long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getFuncao() {

@@ -4,13 +4,13 @@ import java.time.LocalDate;
 
 public class Pessoa {
 	
-	private long id;
+	private int id;
 	private String nome;
 	private LocalDate dataNascimento;
 	private String endereco;
 	private String telefone;
 	private String email;
-	private char sexo;
+	private String sexo;
 	private LocalDate dataCadastro;
 	
 		
@@ -48,10 +48,10 @@ public class Pessoa {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public char getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
-	public void setSexo(char sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 	public LocalDate getDataCadastro() {
@@ -60,6 +60,15 @@ public class Pessoa {
 	public void setDataCadastro(LocalDate dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	
 	
 	
