@@ -17,7 +17,6 @@ public class main {
 		PessoaController pessoaContorller = new PessoaController();
 		
 		Pessoa pessoa = new Pessoa();
-		//pessoa.setId(10);
 		pessoa.setNome("VICTOR ");
 		pessoa.setDataNascimento(LocalDate.of(2005, 05, 15));
 		pessoa.setEndereco("Rua 611 Qd. 511");
@@ -27,7 +26,7 @@ public class main {
 		pessoa.setDataCadastro(LocalDate.of(2001, 05, 15));
 		
 		pessoaContorller.salvarPessoa(pessoa);
-		//pessoa.setTelefone("(62)3233-4444");
+
 		
 		System.out.println("--------------------");
 		
@@ -36,8 +35,12 @@ public class main {
 		List<Pessoa> pessoas = pessoaContorller.listarPessoas();
 		for(Pessoa atual: pessoas) {
 			System.out.println("Nome:" + atual.getNome());
-			System.out.println("Email: "+ atual.getEmail());
+			System.out.println("Data de Nascimento: "+ atual.getDataNascimento().toString());
 			System.out.println("Endereço" + atual.getEndereco());
+			System.out.println("Email: "+ atual.getEmail());
+			System.out.println("Sexo: "+ atual.getSexo());
+			System.out.println("data de Nascimento: "+ atual.getDataCadastro().toString());
+			
 			System.out.println("\n\n");
 		}
 
