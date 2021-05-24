@@ -63,13 +63,7 @@ public class PessoaDao {
 	
 	public boolean salvarPessoa(Pessoa pessoa) {
 		boolean isSalvo = false;
-		/*String queryPessoa = 
-		"INSERT INTO pessoa (nome,dataNascimento,endereco,telefone,email,sexo,dataCadastro)"+ "values(?,?,?,?,?,?,?);";
-		
-		String queryEndereco = "insert to indereco ("
-				+"rua,numero,complemento,bairro,bairro,cidade,estado,tipoEndereco,idPessoa"
-				+"values(?,?,?,?,?,?,?,?,?);";
-				*/
+
 		String query = "insert into pessoa (nome,dataNascimento,endereco,telefone,email,sexo,dataCadastro)"
 				+ "values (?,?,?,?,?,?,?);";
 		try {
@@ -123,9 +117,9 @@ public class PessoaDao {
 			preparedStatement.setString(3, pessoa.getEndereco());
 			preparedStatement.setString(4, pessoa.getTelefone());
 			preparedStatement.setString(5,pessoa.getEmail());
-			preparedStatement.setString(5, pessoa.getSexo());
-			preparedStatement.setDate(6 ,java.sql.Date.valueOf(pessoa.getDataCadastro()) );
-			
+			preparedStatement.setString(6, pessoa.getSexo());
+			preparedStatement.setDate(7 ,java.sql.Date.valueOf(pessoa.getDataCadastro()) );
+			preparedStatement.setInt(8,pessoa.getId());
 			//preparedStatement.execute(query);
 		//	preparedStatement.execute();
 			preparedStatement.executeUpdate();

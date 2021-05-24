@@ -59,17 +59,17 @@ public class ProfessorDao {
 	
 	public boolean salvarProfessroComModalidades(Professor professor) throws SQLException {
 		boolean isSalvo = false;
-		String queryPessoa = "insert into professor (nome,dataNascimento,endereco,telefone,email,sexo,dataCadastro)"
+		String queryProfessor = "insert into professor (nome,dataNascimento,endereco,telefone,email,sexo,dataCadastro)"
 				+ "values (?,?,?,?,?,?,?);";
 		
-		String queryEndereco = "insert into modalidade(nome,descricao,idProfessor)"
+		String queryModalidade = "insert into modalidade(nome,descricao,idProfessor)"
 				+ "VALUES (?,?,?)";
 		
 		
 		try {
 			con.setAutoCommit(false);
 			
-			preparedStatement = con.prepareStatement(queryPessoa);
+			preparedStatement = con.prepareStatement(queryProfessor);
 			preparedStatement.setString(1, professor.getNome());
 			preparedStatement.setDate(2, java.sql.Date.valueOf(professor.getDataNascimento()) );
 			preparedStatement.setString(3, professor.getEndereco());
@@ -102,7 +102,7 @@ public class ProfessorDao {
 			
 			professor.getModalidade().forEach(modalidade ->{
 				try {
-					preparedStatement = con.prepareStatement(queryEndereco);
+					preparedStatement = con.prepareStatement(queryModalidade);
 					preparedStatement.setString(1, modalidade.getNome());
 					preparedStatement.setString(2, modalidade.getDescricao());
 					
@@ -127,7 +127,7 @@ public class ProfessorDao {
 			
 			
 		} catch (Exception e) {
-			System.err.println("Erro ao inserir Modalidade " +  e.getMessage());
+			System.err.println("Erro ao inserir salvarProfessroComModalidades(): ERRO: " +  e.getMessage());
 			isSalvo = false;
 			con.rollback();
 		}

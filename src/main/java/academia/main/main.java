@@ -19,13 +19,19 @@ public class main {
 		ProfessorController professorController = new ProfessorController();
 		mainAux mainAux = new mainAux();
 
-		mainAux.addPesso(2);
+		//VOCE DEVE PASSAR UM NOMERO SO PARA 
+		//	mainAux.addPessoa(2); // OK
+		//	mainAux.editarPessoa(3); // OK
+		//	mainAux.delearPessoa(); // OK
+	
+		
 	//	mainAux.listPessoaAllAux();
 	//	mainAux.listModalidadeAllAux();
+	//	mainAux.addProfessroComModalidades(1);
 		
-		
+		/*
 		Professor professor = new Professor();
-		professor.setNome("aaaaaaaaaa " );
+		professor.setNome("Professor" );
 		professor.setDataNascimento(LocalDate.of(2005, 05, 25));
 		professor.setEndereco("aaaa");
 		professor.setTelefone("ddd");
@@ -55,7 +61,7 @@ public class main {
 		
 		
 		
-		/*
+		
 		PessoaController pessoaContorller = new PessoaController();
 		
 		Pessoa pessoa = new Pessoa();
