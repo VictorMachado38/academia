@@ -1,19 +1,61 @@
 package academia.main;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import academia.controller.PessoaController;
+import academia.controller.ProfessorController;
 import academia.model.*;
 import academia.model.Pessoa;
 //import minhacidademelhor.model.Sexo;
+
 
 public class main {
 
 	public static void main(String[] args) {
 	
+		ProfessorController professorController = new ProfessorController();
+		mainAux mainAux = new mainAux();
+
+		mainAux.addPesso(2);
+	//	mainAux.listPessoaAllAux();
+	//	mainAux.listModalidadeAllAux();
 		
-		// TODO Auto-generated method stub
+		
+		Professor professor = new Professor();
+		professor.setNome("aaaaaaaaaa " );
+		professor.setDataNascimento(LocalDate.of(2005, 05, 25));
+		professor.setEndereco("aaaa");
+		professor.setTelefone("ddd");
+		professor.setEmail("pecccssoa@pessoaT.com");
+		professor.setSexo("Mascuxxxlico");
+		professor.setDataCadastro(LocalDate.of(2001, 05, 15));
+		
+		Modalidade modalidade = new Modalidade();
+		
+		modalidade.setNome("JUDO");
+		modalidade.setDescricao("AULA DA JUDO MUITO BOA");
+		
+		List<Modalidade> modalidades = new ArrayList();
+		modalidades.add(modalidade);
+		modalidades.add(modalidade);
+		
+		professor.setModalidade(modalidades);
+		
+		try {
+			professorController.salvarProfessroComModalidades(professor);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+			
+		
+		
+		
+		/*
 		PessoaController pessoaContorller = new PessoaController();
 		
 		Pessoa pessoa = new Pessoa();
@@ -28,22 +70,26 @@ public class main {
 		pessoaContorller.salvarPessoa(pessoa);
 
 		
-		System.out.println("--------------------");
+		System.out.println("--------Pessoa adicionada------------");
 		
 		
 		
 		List<Pessoa> pessoas = pessoaContorller.listarPessoas();
 		for(Pessoa atual: pessoas) {
+			System.out.println("Id: " +atual.getId());
 			System.out.println("Nome:" + atual.getNome());
 			System.out.println("Data de Nascimento: "+ atual.getDataNascimento().toString());
 			System.out.println("Endereço" + atual.getEndereco());
 			System.out.println("Email: "+ atual.getEmail());
 			System.out.println("Sexo: "+ atual.getSexo());
-			System.out.println("data de Nascimento: "+ atual.getDataCadastro().toString());
+			System.out.println("Data de nascimento: "+ atual.getDataCadastro().toString());
 			
 			System.out.println("\n\n");
 		}
+		*/
+	
 
+		
 		
 
 	}

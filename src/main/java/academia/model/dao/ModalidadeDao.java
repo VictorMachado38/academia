@@ -1,6 +1,5 @@
 package academia.model.dao;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,58 +9,50 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import academia.model.Pessoa;
+import academia.model.Modalidade;
 import academia.model.dao.utilDao.ConnectionFactory;
 
-//import minhacidademelhor.model.dao.utilDao.ConnectionFactory;
-//import minhacidademelhor.model.Pessoa;
-//import minhacidademelhor.model.Sexo;
-public class PessoaDao {
+public class ModalidadeDao {
 	
 	Connection con;
 	private Statement statement;
 	private PreparedStatement preparedStatement;
 	
-	public PessoaDao()
+	public ModalidadeDao()
 	{
 		ConnectionFactory connectionFactory = new ConnectionFactory();
 		con = connectionFactory.getConnection();
 		
 	}
 	
-	public List<Pessoa> listarPessoas(){
-		List<Pessoa> pessoas = new ArrayList();
+	public List<Modalidade> listarModalidade(){
+		List<Modalidade> modalidades = new ArrayList();
 		ResultSet set;
 		
 		try {
 			statement = con.createStatement();
-			set = statement.executeQuery("select * from pessoa;");
+			set = statement.executeQuery("select * from modalidade;");
 					
 					while (set.next()) {
-						Pessoa pessoa = new Pessoa();
-						pessoa.setId(set.getInt("id"));
-						pessoa.setNome(set.getString("nome"));
-						pessoa.setDataNascimento(convertToLocalDateViaSqlDate(set.getDate("dataNascimento")));
-						pessoa.setEndereco(set.getString("endereco"));
-						pessoa.setTelefone(set.getString("telefone"));		
-						pessoa.setEmail(set.getString("email"));
-						pessoa.setSexo(set.getString("sexo"));
-						pessoa.setDataCadastro(convertToLocalDateViaSqlDate(set.getDate("dataNascimento")));
+						Modalidade modalidade = new Modalidade();
+						modalidade.setIdModalidade(set.getInt("idModalidade"));
+						modalidade.setNome(set.getString("nome"));
+						modalidade.setDescricao(set.getString("descricao"));
 						
-						pessoas.add(pessoa);
+						modalidades.add(modalidade);
 					}
 			
 		}
 		catch(Exception e) {
 			
-			System.err.println("erro ao listar pessoa" + e.getMessage());
+			System.err.println("erro ao listar Modalidade: " + e.getMessage());
 			
 		}
-		return pessoas;
+		return modalidades;
 		
 	}
 	
-	public boolean salvarPessoa(Pessoa pessoa) {
+	public boolean salvarvModalidade(Modalidade modalidade) {
 		boolean isSalvo = false;
 		/*String queryPessoa = 
 		"INSERT INTO pessoa (nome,dataNascimento,endereco,telefone,email,sexo,dataCadastro)"+ "values(?,?,?,?,?,?,?);";
@@ -70,19 +61,14 @@ public class PessoaDao {
 				+"rua,numero,complemento,bairro,bairro,cidade,estado,tipoEndereco,idPessoa"
 				+"values(?,?,?,?,?,?,?,?,?);";
 				*/
-		String query = "insert into pessoa (nome,dataNascimento,endereco,telefone,email,sexo,dataCadastro)"
-				+ "values (?,?,?,?,?,?,?);";
+		String query = "insert into modalidade (nome,descricao)"
+				+ "values (?,?);";
 		try {
 			
 			con.setAutoCommit(false);
 			preparedStatement = con.prepareStatement(query);
-			preparedStatement.setString(1, pessoa.getNome());
-			preparedStatement.setDate(2, java.sql.Date.valueOf(pessoa.getDataNascimento()) );
-			preparedStatement.setString(3, pessoa.getEndereco());
-			preparedStatement.setString(4, pessoa.getTelefone());
-			preparedStatement.setString(5,pessoa.getEmail());
-			preparedStatement.setString(6, pessoa.getSexo());
-			preparedStatement.setDate(7 ,java.sql.Date.valueOf(pessoa.getDataCadastro()) );
+			preparedStatement.setString(1, modalidade.getNome());
+			preparedStatement.setString(1, modalidade.getDescricao());
 			
 			//preparedStatement.execute(query);
 			preparedStatement.execute();
@@ -93,7 +79,7 @@ public class PessoaDao {
 		}
 		catch(Exception e){
 			
-			System.out.println("Errp ao inserrir pessoa:" + e.getMessage());
+			System.out.println("Errp ao inserrir modalidade:" + e.getMessage());
 			isSalvo = false;			
 				
 		}
@@ -101,6 +87,7 @@ public class PessoaDao {
 		return isSalvo;
 	}
 	
+	/*
 	public boolean editarPessoa(Pessoa pessoa) {
 		boolean isSalvo = false;
 		
@@ -172,7 +159,7 @@ public class PessoaDao {
 		return isSalvo;
 	}
 
-	/*public boolean salvarPessoaComEndereco(Pessoa pessoa) {
+	public boolean salvarPessoaComEndereco(Pessoa pessoa) {
 		boolean isSalvo = false;
 		String query = "insert into pessoa (nome,cpf,email,telefone,sexo,dataNascimento)"
 				+ "values(?,?,?,?,?,?);";
@@ -213,3 +200,6 @@ public class PessoaDao {
 	
 
 }
+
+
+
