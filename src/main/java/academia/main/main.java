@@ -47,6 +47,16 @@ public class main {
 		//	mainAux.deletarFuncionario();
 		
 		
+		//	mainAux.listAlunoAllAux();
+		//	mainAux.addAluno(33);
+		//	mainAux.editarAluno(77, 3);
+		// 	mainAux.deletarAluno();
+		
+		mainAux.listPlanoAux();
+		
+		
+		
+		
 		
 		
 		

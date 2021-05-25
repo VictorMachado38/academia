@@ -7,9 +7,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
+import academia.controller.AlunoController;
 import academia.controller.FuncionarioController;
 import academia.controller.ModalidadeController;
 import academia.controller.PessoaController;
+import academia.controller.PlanoController;
 import academia.controller.ProfessorController;
 import academia.model.*;
 
@@ -19,6 +21,8 @@ public class mainAux {
 	ProfessorController professorController = new ProfessorController();
 	ModalidadeController modalidadeController = new ModalidadeController();
 	FuncionarioController funcionarioController = new FuncionarioController();
+	AlunoController alunoController = new AlunoController();
+	PlanoController planoController = new PlanoController();
 
 	public void listPessoaAllAux() {
 		List<Pessoa> pessoas = pessoaContorller.listarPessoas();
@@ -353,6 +357,98 @@ public class mainAux {
 
 		System.out.println("--------FUNCIONARIO COM O ID " + id + " DELETADO! ");
 		System.out.println(" | '-' | ");
+
+	}
+
+	public void listAlunoAllAux() {
+		List<Aluno> alunos = alunoController.listarAlunos();
+		for (Aluno atual : alunos) {
+			System.out.println("Id: " + atual.getId());
+			System.out.println("Nome:" + atual.getNome());
+			System.out.println("Data de Nascimento: " + atual.getDataNascimento().toString());
+			System.out.println("Endereço" + atual.getEndereco());
+			System.out.println("Email: " + atual.getEmail());
+			System.out.println("Sexo: " + atual.getSexo());
+			System.out.println("Data de nascimento: " + atual.getDataCadastro().toString());
+			System.out.println("Matriculas:" + atual.getMatricula());
+
+			System.out.println("\n\n");
+		}
+
+	}
+
+	public void addAluno(int num) {
+		Aluno aluno = new Aluno();
+		aluno.setNome("Aluno " + num);
+		aluno.setDataNascimento(LocalDate.of(2005, 05, 15));
+		aluno.setEndereco("Rua 611 Qd. 511");
+		aluno.setTelefone("(62)98765-8547");
+		aluno.setEmail("Aluno" + num + "@pessoaT.com");
+		aluno.setSexo("Masculico");
+		aluno.setDataCadastro(LocalDate.of(2001, 05, 15));
+		aluno.setMatricula(555555555);
+		
+		
+
+		alunoController.salvarAluno(aluno);
+
+		System.out.println("--------Aluno adicionado------------");
+
+	}
+
+	public void editarAluno(int num, int id) {
+		Aluno alunoEditado = new Aluno();
+		
+		List<Aluno> funcionarios = alunoController.listarAlunos();
+		for (Iterator iterator = funcionarios.iterator(); iterator.hasNext();) {
+			Aluno aluno2 = (Aluno) iterator.next();
+			
+			if (aluno2.getId() == id) {
+				alunoEditado = aluno2;
+			}
+
+		}
+
+		alunoEditado.setNome("Aluno EDITADO" + num);
+		alunoEditado.setDataNascimento(LocalDate.of(2005, 05, 15));
+		alunoEditado.setEndereco("Rua 611 Qd. 511");
+		alunoEditado.setTelefone("(62)98765-8547");
+		alunoEditado.setEmail("AlunoEditado" + num + "@pessoaEditadaT.com");
+		alunoEditado.setSexo("Masculico");
+		alunoEditado.setDataCadastro(LocalDate.of(2001, 05, 15));
+		alunoEditado.setMatricula(99999);
+		
+
+		alunoController.editarAluno(alunoEditado);
+
+		System.out.println("--------Aluno foi editado------------");
+
+	}
+
+	public void deletarAluno() {
+
+		listAlunoAllAux();
+
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Qual o ID da aluno aque voce quer deletar ?");
+		int id = sc.nextInt();
+
+		alunoController.deletarAluno(id);
+
+		System.out.println("--------ALUNO COM O ID " + id + " FOI DELETADO! ");
+		System.out.println(" | '-' | ");
+
+	}
+
+	public void listPlanoAux() {
+		List<Plano> planos = planoController.listarPlanos();
+		for (Plano atual : planos) {
+			System.out.println("Id: " + atual.getId());
+			System.out.println("Nome do plano: " + atual.getNomeDoPlano());
+			System.out.println("Valor do Plano R$" + atual.getValor());
+
+			System.out.println("\n\n");
+		}
 
 	}
 

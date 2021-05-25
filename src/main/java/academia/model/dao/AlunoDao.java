@@ -31,7 +31,7 @@ public class AlunoDao {
 		
 		try {
 			statement = con.createStatement();
-			set = statement.executeQuery("select * from funcionario;");
+			set = statement.executeQuery("select * from aluno;");
 					
 					while (set.next()) {
 						Aluno aluno = new Aluno();
@@ -107,7 +107,7 @@ public class AlunoDao {
 				+ "email = ?,"
 				+ "sexo = ?,"
 				+ "dataCadastro = ?,"
-				+ "maticula = ?,"
+				+ "matricula = ? "
 				+ "WHERE id = ?";	
 		
 		try {
@@ -122,7 +122,7 @@ public class AlunoDao {
 			preparedStatement.setString(6, aluno.getSexo());
 			preparedStatement.setDate(7 ,java.sql.Date.valueOf(aluno.getDataCadastro()) );
 			preparedStatement.setInt(8, aluno.getMatricula());
-			preparedStatement.setInt(10,aluno.getId());
+			preparedStatement.setInt(9,aluno.getId());
 			
 			//preparedStatement.execute(query);
 		//	preparedStatement.execute();
@@ -133,7 +133,7 @@ public class AlunoDao {
 		}
 		catch(Exception e){
 			
-			System.out.println("Erro ao EDITAR funcionario:" + e.getMessage());
+			System.out.println("Erro ao EDITAR aluno:" + e.getMessage());
 			isSalvo = false;			
 				
 		}
