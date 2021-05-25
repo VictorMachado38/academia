@@ -21,8 +21,15 @@ public class main {
 
 		//VOCE DEVE PASSAR UM NOMERO SO PARA 
 		//	mainAux.addPessoa(2); // OK
-		//	mainAux.editarPessoa(3); // OK
+		//mainAux.editarPessoa(99,3); // tem passar um 2 int, um para ficar mais facil de olhar no banco e o um ID para editar
 		//	mainAux.delearPessoa(); // OK
+		
+		
+		//mainAux.listProfessoresAllAux();
+		// mainAux.addProfessor(10);
+		//mainAux.editarProfessor(55,4); // tem passar um 2 int, um para ficar mais facil de olhar no banco e o um ID para editar
+		//mainAux.delearProfessor();
+		
 	
 		
 	//	mainAux.listPessoaAllAux();

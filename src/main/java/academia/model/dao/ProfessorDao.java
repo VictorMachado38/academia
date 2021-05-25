@@ -35,13 +35,18 @@ public class ProfessorDao {
 		
 		try {
 			statement = con.createStatement();
-			set = statement.executeQuery("select * from professro;");
+			set = statement.executeQuery("select * from professor;");
 					
 					while (set.next()) {
 						Professor professor = new Professor();
-						//professor.setIdProfessor(set.getInt("idProfessor"));
-					//	professor.setIdPessoa(set.getInt("idPessoa"));
-					//	professor.setIdModalidade(set.getInt("idModalidade"));
+						professor.setId(set.getInt("id"));
+						professor.setNome(set.getString("nome"));
+						professor.setDataNascimento(convertToLocalDateViaSqlDate(set.getDate("dataNascimento")));
+						professor.setEndereco(set.getString("endereco"));
+						professor.setTelefone(set.getString("telefone"));		
+						professor.setEmail(set.getString("email"));
+						professor.setSexo(set.getString("sexo"));
+						professor.setDataCadastro(convertToLocalDateViaSqlDate(set.getDate("dataNascimento")));
 						
 						professores.add(professor);
 					}
@@ -49,14 +54,13 @@ public class ProfessorDao {
 		}
 		catch(Exception e) {
 			
-			System.err.println("erro ao listar Professor : " + e.getMessage());
+			System.err.println("erro ao listar professor: " + e.getMessage());
 			
 		}
 		return professores;
 		
 	}
-	
-	
+
 	public boolean salvarProfessroComModalidades(Professor professor) throws SQLException {
 		boolean isSalvo = false;
 		String queryProfessor = "insert into professor (nome,dataNascimento,endereco,telefone,email,sexo,dataCadastro)"
@@ -137,6 +141,110 @@ public class ProfessorDao {
 	}
 	
 
+	public boolean salvarProfessor(Professor professor) {
+		boolean isSalvo = false;
+
+		String query = "insert into professor (nome,dataNascimento,endereco,telefone,email,sexo,dataCadastro)"
+				+ "values (?,?,?,?,?,?,?);";
+		try {
+			
+			con.setAutoCommit(false);
+			preparedStatement = con.prepareStatement(query);
+			preparedStatement.setString(1, professor.getNome());
+			preparedStatement.setDate(2, java.sql.Date.valueOf(professor.getDataNascimento()) );
+			preparedStatement.setString(3, professor.getEndereco());
+			preparedStatement.setString(4, professor.getTelefone());
+			preparedStatement.setString(5,professor.getEmail());
+			preparedStatement.setString(6, professor.getSexo());
+			preparedStatement.setDate(7 ,java.sql.Date.valueOf(professor.getDataCadastro()) );
+			
+			//preparedStatement.execute(query);
+			preparedStatement.execute();
+		//	preparedStatement.executeUpdate();
+			con.commit();			
+			isSalvo = true;
+			
+		}
+		catch(Exception e){
+			
+			System.out.println("Errp ao inserrir Professor:" + e.getMessage());
+			isSalvo = false;			
+				
+		}
+		
+		return isSalvo;
+	}
+	
+	public boolean editarProfessor(Professor professor) {
+		boolean isSalvo = false;
+		
+		 String query = "UPDATE professor "
+				+ "SET nome = ?,"
+				+ "dataNascimento = ?,"
+				+ "endereco = ?,"
+				+ "telefone = ?,"
+				+ "email = ?,"
+				+ "sexo = ?,"
+				+ "dataCadastro = ?"
+				+ "WHERE id = ?";	
+		
+		try {
+			
+			con.setAutoCommit(false);
+			preparedStatement = con.prepareStatement(query);
+			preparedStatement.setString(1, professor.getNome());
+			preparedStatement.setDate(2, java.sql.Date.valueOf(professor.getDataNascimento()) );
+			preparedStatement.setString(3, professor.getEndereco());
+			preparedStatement.setString(4, professor.getTelefone());
+			preparedStatement.setString(5,professor.getEmail());
+			preparedStatement.setString(6, professor.getSexo());
+			preparedStatement.setDate(7 ,java.sql.Date.valueOf(professor.getDataCadastro()) );
+			preparedStatement.setInt(8,professor.getId());
+			//preparedStatement.execute(query);
+		//	preparedStatement.execute();
+			preparedStatement.executeUpdate();
+			con.commit();			
+			isSalvo = true;
+			
+		}
+		catch(Exception e){
+			
+			System.out.println("Errp ao EDITAR professor:" + e.getMessage());
+			isSalvo = false;			
+				
+		}
+		
+		return isSalvo;
+	}
+		
+	public boolean deletarProfessor(long id) {
+		boolean isSalvo = false;
+		
+		 String query = "delete from professor where id = ?";
+			
+			
+			try {
+				
+				con.setAutoCommit(false);
+				preparedStatement = con.prepareStatement(query);
+				preparedStatement.setLong(1,id);
+				
+				preparedStatement.execute();
+				con.commit();			
+				isSalvo = true;
+				
+			
+		}
+		catch(Exception e){
+			
+			System.out.println("Errp ao DELETAR professor:" + e.getMessage());
+			isSalvo = false;			
+				
+		}
+		
+		return isSalvo;
+	}
+	
 	
 	public LocalDate convertToLocalDateViaSqlDate(Date dateToConvert) {
 	    return new java.sql.Date(dateToConvert.getTime()).toLocalDate();

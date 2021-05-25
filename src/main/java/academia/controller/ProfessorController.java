@@ -12,13 +12,13 @@ public class ProfessorController {
 	ProfessorDao professorDao = new ProfessorDao();
 	
 	
-	public List<Professor> listarProfessors(){
+	public List<Professor> listarProfessores(){
 		professorDao = new ProfessorDao();
 		 List<Professor> professor; 
 		 return professor = professorDao.listarProfessor();
 //		 return null;
 	}
-/*
+
 	public boolean salvarProfessor(Professor professor) {
 		professorDao = new ProfessorDao();
 		boolean isSalvo = professorDao.salvarProfessor(professor);
@@ -31,12 +31,12 @@ public class ProfessorController {
 		return isSalvo;
 	}
 	
-	public boolean editarProfessor(int id) {
+	public boolean deletarProfessor(int id) {
 		professorDao = new ProfessorDao();
 		boolean isSalvo = professorDao.deletarProfessor(id);
 		return isSalvo;
 	}
-	*/
+	
 	public boolean salvarProfessroComModalidades(Professor professor) throws SQLException {
 		professorDao = new ProfessorDao();
 		boolean isSalvo = professorDao.salvarProfessroComModalidades(professor);

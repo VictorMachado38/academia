@@ -54,7 +54,7 @@ public class mainAux {
 	}
 	
 	
-	public void editarPessoa(int num) {
+	public void editarPessoa(int num, int id) {
 		//Pessoa pessoa = new Pessoa();
 		Pessoa pessoaEditada = new Pessoa();
 		/*
@@ -69,17 +69,12 @@ public class mainAux {
 		List<Pessoa> pessoas = pessoaContorller.listarPessoas();
 		for (Iterator iterator = pessoas.iterator(); iterator.hasNext();) {
 			Pessoa pessoa2 = (Pessoa) iterator.next();
-		//	System.out.println("Id: " + pessoa2.getId());
-		//	System.out.println("nome: "+ pessoa2.getNome());
-		//	System.out.println("cpf: "+ pessoa2.getCpf());
-		//	System.out.println("Data de Nascimento: "+ pessoa2.getDataNascimento().toString());
-			if(pessoa2.getId() == 2) {
+			if(pessoa2.getId() == id) {
 				pessoaEditada = pessoa2;
 			}
 			
 		}
 		
-		//pessoaContorller.salvarPessoa(pessoa);
 		
 	
 		pessoaEditada.setNome("Pessoa EDITADA" + num);
@@ -116,6 +111,84 @@ public class mainAux {
 		
 	}
 	
+	public void listProfessoresAllAux() {
+	List<Professor> professores = professorController.listarProfessores();
+	for(Professor atual: professores) {
+		System.out.println("----------Professor-----------");
+		System.out.println("Id: " +atual.getId());
+		System.out.println("Nome:" + atual.getNome());
+		System.out.println("Data de Nascimento: "+ atual.getDataNascimento().toString());
+		System.out.println("Endereço" + atual.getEndereco());
+		System.out.println("Email: "+ atual.getEmail());
+		System.out.println("Sexo: "+ atual.getSexo());
+		System.out.println("Data de nascimento: "+ atual.getDataCadastro().toString());
+		
+		System.out.println("\n\n");
+	}
+	}
+	
+	public void addProfessor(int num) {
+		Professor professor = new Professor();
+		professor.setNome("Professor " + num);
+		professor.setDataNascimento(LocalDate.of(2005, 05, 15));
+		professor.setEndereco("Rua 611 Qd. 511");
+		professor.setTelefone("(62)98765-8547");
+		professor.setEmail("professor"+num+"@professorT.com");
+		professor.setSexo("Masculico");
+		professor.setDataCadastro(LocalDate.of(2001, 05, 15));
+		
+		professorController.salvarProfessor(professor);
+
+		
+		System.out.println("--------Professor extend Pessoa adicionada------------");
+		
+	}
+
+	public void editarProfessor(int num, int id) {
+	
+		Professor professorEditado = new Professor();
+
+		List<Professor> professores = professorController.listarProfessores();
+		for (Iterator iterator = professores.iterator(); iterator.hasNext();) {
+			Professor professor2 = (Professor) iterator.next();
+			if(professor2.getId() == id) {
+				professorEditado = professor2;
+			}
+			
+		}	
+		professorEditado.setNome("Professora EDITADA" + num);
+		professorEditado.setDataNascimento(LocalDate.of(2005, 05, 15));
+		professorEditado.setEndereco("Rua da edição");
+		professorEditado.setTelefone("(62)98765-8547");
+		professorEditado.setEmail("pessoaEditada"+num+"@pessoaEditadaT.com");
+		professorEditado.setSexo("Feminino");
+		professorEditado.setDataCadastro(LocalDate.of(2001, 05, 15));
+		
+		
+		
+		professorController.editarProfessor(professorEditado);
+
+		
+		System.out.println("--------Professor foi editada------------");
+		
+	}
+	
+	public void delearProfessor() {
+		
+		listProfessoresAllAux();
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Qual o ID da pesso aque voce quer deletar ?");
+		int id = sc.nextInt(); 
+		
+		professorController.deletarProfessor(id);
+		
+		System.out.println("--------PROFESSOR COM O ID "+id+" DELETADO! ");
+		System.out.println(" | '-' | ");
+		
+		
+		
+	}
 	public void listModalidadeAllAux() {
 		List<Modalidade> modalidades = modalidadeController.listarModalidades();
 		for(Modalidade atual: modalidades) {
