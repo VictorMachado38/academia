@@ -7,6 +7,7 @@ public class Plano {
 	private long Plano;
 	private String nomeDoPlano;
 	private BigDecimal valor;
+	private int idAluno;
 	
 	
 	
@@ -30,6 +31,12 @@ public class Plano {
 	}
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
+	}
+	public int getIdAluno() {
+		return idAluno;
+	}
+	public void setIdAluno(int idAluno) {
+		this.idAluno = idAluno;
 	}
 	
 	

@@ -21,7 +21,7 @@ public class Modalidade {
 	public Modalidade() {
 		super();
 	}
-	public long getIdModalidade() {
+	public int getIdModalidade() {
 		return idModalidade;
 	}
 	public void setIdModalidade(int idModalidade) {

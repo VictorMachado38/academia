@@ -1,31 +1,29 @@
 package academia.model;
 
+import java.util.List;
+
 public class Aluno extends Pessoa{
 	
-	private long idAluno;
-	private int funcao;
-	private Pacote Pacote;
-	public long getIdAluno() {
-		return idAluno;
+	
+	private int matricula;
+	private List<Plano> Plano;
+	
+	
+	public int getMatricula() {
+		return matricula;
 	}
-	public void setIdAluno(long idAluno) {
-		this.idAluno = idAluno;
+	public void setMatricula(int matricula) {
+		this.matricula = matricula;
 	}
-	public int getFuncao() {
-		return funcao;
+	public List<Plano> getPlano() {
+		return Plano;
 	}
-	public void setFuncao(int funcao) {
-		this.funcao = funcao;
-	}
-	public Pacote getPacote() {
-		return Pacote;
-	}
-	public void setPacote(Pacote pacote) {
-		Pacote = pacote;
+	public void setPlano(List<Plano> plano) {
+		Plano = plano;
 	}
 	
 	
-	
+
 	
 
 }

@@ -229,6 +229,7 @@ public class ProfessorDao {
 				preparedStatement = con.prepareStatement(query);
 				preparedStatement.setLong(1,id);
 				
+			
 				preparedStatement.execute();
 				con.commit();			
 				isSalvo = true;

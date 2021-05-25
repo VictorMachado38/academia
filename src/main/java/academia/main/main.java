@@ -19,22 +19,36 @@ public class main {
 		ProfessorController professorController = new ProfessorController();
 		mainAux mainAux = new mainAux();
 
-		//VOCE DEVE PASSAR UM NOMERO SO PARA 
-		//	mainAux.addPessoa(2); // OK
-		//mainAux.editarPessoa(99,3); // tem passar um 2 int, um para ficar mais facil de olhar no banco e o um ID para editar
+		//	VOCE DEVE PASSAR UM NOMERO SO PARA 
+		//	mainAux.addPessoa(2); // OK Tem que passar um int que vai ser adicionada no nome da PESSOA, para ajudar nos testes
+		//	mainAux.listPessoaAllAux(); // OK
+		//	mainAux.editarPessoa(99,3); // tem passar um 2 int, um para ficar mais facil de olhar no banco e o um ID para editar
 		//	mainAux.delearPessoa(); // OK
 		
 		
-		//mainAux.listProfessoresAllAux();
-		// mainAux.addProfessor(10);
-		//mainAux.editarProfessor(55,4); // tem passar um 2 int, um para ficar mais facil de olhar no banco e o um ID para editar
-		//mainAux.delearProfessor();
+		//	mainAux.listProfessoresAllAux();
+		//	mainAux.addProfessor(10);
+		//	mainAux.editarProfessor(55,4); // tem passar um 2 int, um para ficar mais facil de olhar no banco e o um ID para editar
+		//	mainAux.delearProfessor();
+		//	mainAux.addProfessroComModalidades(70); //Tem que passar um int que vai ser adicionada no nome do PROFESSOR e e nome da MODALIDADE, para ajudar nos testes
 		
-	
 		
-	//	mainAux.listPessoaAllAux();
-	//	mainAux.listModalidadeAllAux();
-	//	mainAux.addProfessroComModalidades(1);
+		
+			
+		//	mainAux.addModalidade(10); // Tem que passar um int que vai ser adicionada no nome da PESSOA, para ajudar nos testes
+		//	mainAux.listModalidadeAllAux();
+		//	mainAux.editarModalidade(7777, 9); // tem passar um 2 int, um para ficar mais facil de olhar no banco e o um ID para editar
+		//	mainAux.delearModalidades();
+		
+		
+		//	mainAux.listFuncionarioAllAux();
+		//	mainAux.addFuncionario(99); // Tem que passar um int que vai ser adicionada no nome do Funcionario, para ajudar nos testes
+		//	mainAux.editarFuncionario(100, 3); // tem passar um 2 int, um para ficar mais facil de olhar no banco e o um ID para editar
+		//	mainAux.deletarFuncionario();
+		
+		
+		
+		
 		
 		/*
 		Professor professor = new Professor();

@@ -15,27 +15,28 @@ public class ModalidadeController {
 		List<Modalidade> modalidades;
 		return modalidades = modalidadeDao.listarModalidade();
 		}
-	/*
-	public boolean salvarPessoa(Pessoa pessoa) {
+	
+	public boolean salvarModalidade(Modalidade modalidade) {
 		modalidadeDao = new ModalidadeDao();
-		boolean isSalvo = modalidadeDao.salvarPessoa(pessoa);
+		boolean isSalvo = modalidadeDao.salvarModalidade(modalidade);
 		return isSalvo;
 			
 	}
 	
-	public boolean editarPessoa(Pessoa pessoa) {
+	public boolean editarModalidade(Modalidade modalidade) {
 		modalidadeDao = new ModalidadeDao();
-		boolean isSalvo = modalidadeDao.editarPessoa(pessoa);
+		boolean isSalvo = modalidadeDao.editarModalidade(modalidade);
 		return isSalvo;
 			
 	}
-	public boolean deletarPessoa(long id) {
+	
+	public boolean deletarModalidade(long id) {
 		modalidadeDao = new ModalidadeDao();
-		boolean isSalvo = modalidadeDao.deletarPessoa(id);
+		boolean isSalvo = modalidadeDao.deletarModalidade(id);
 		return isSalvo;
 			
 	}
-*/
+
 	
 
 }
