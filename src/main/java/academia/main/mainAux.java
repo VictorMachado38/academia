@@ -629,4 +629,56 @@ public class mainAux {
 
 	}
 
+	public void addTurma(int num, int maxAlunos) {
+		
+		Turma turma = new Turma();
+		turma.setNome("Turma" + num);
+		turma.setMaxAluno(maxAlunos);
+		turma.setHorario("Horario add com turma");
+		turma.setDescTurma("Descrição da turma"+num);
+
+		turmaController.salvarTurma(turma);
+
+		System.out.println("--------Turma adicionada------------");
+
+	}
+
+	public void editarTurma(int num, int id) {
+
+		Turma turmaEditado = new Turma();
+
+		List<Turma> turmas = turmaController.listarTurmas();
+		for (Iterator iterator = turmas.iterator(); iterator.hasNext();) {
+			Turma turma2 = (Turma) iterator.next();
+			if (turma2.getId() == id) {
+				turmaEditado = turma2;
+			}
+
+		}
+		
+		turmaEditado.setNome("Turma editada" + num);
+		turmaEditado.setMaxAluno(33);
+		turmaEditado.setHorario("Horario add com turma");
+		turmaEditado.setDescTurma("Descrição da turma"+num);
+
+		turmaController.editarTurma(turmaEditado);
+		
+		System.out.println("--------Turma foi editada------------");
+
+	}
+
+	public void delearTurma() {
+
+		listarTurmas();
+
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Qual o ID do turma aque voce quer deletar ?");
+		int id = sc.nextInt();
+
+		turmaController.deletarTurma(id);
+
+		System.out.println("--------PROFESSOR COM O ID " + id + " DELETADO! ");
+		System.out.println(" | '-' | ");
+
+	}
 }

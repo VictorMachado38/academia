@@ -5,9 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import academia.model.Modalidade;
 import academia.model.Professor;
 import academia.model.Turma;
 import academia.model.dao.utilDao.ConnectionFactory;
@@ -171,4 +174,103 @@ public class TurmaDao {
 	}
 	
 	
+	public boolean salvarTurma(Turma turma) {
+		
+		boolean isSalvo = false;
+		String query = "insert into turma (nome,maxAluno,horario,descTurma)"
+				+ "values (?,?,?,?);";
+		try {
+			
+			con.setAutoCommit(false);
+			preparedStatement = con.prepareStatement(query);
+			preparedStatement.setString(1, turma.getNome());
+			preparedStatement.setInt(2, turma.getMaxAluno());
+			preparedStatement.setString(3, turma.getHorario());
+			preparedStatement.setString(4, turma.getDescTurma());
+			
+
+			preparedStatement.execute();
+
+			con.commit();			
+			isSalvo = true;
+			
+		}
+		catch(Exception e){
+			
+			System.out.println("Erro ao inserrir turma:" + e.getMessage());
+			isSalvo = false;			
+				
+		}
+		
+		return isSalvo;
+	}
+	
+	
+	public boolean editarTurma(Turma turma) {
+		boolean isSalvo = false;
+		
+		 String query = "UPDATE turma "
+				+ "SET nome = ?,"
+				+ "maxAluno = ?,"
+				+ "horario = ?,"
+				+ "descTurma = ?"
+				+ "WHERE id = ?";	
+		
+		try {
+			
+			con.setAutoCommit(false);
+			preparedStatement = con.prepareStatement(query);
+			preparedStatement.setString(1, turma.getNome());
+			preparedStatement.setInt(2, turma.getMaxAluno());
+			preparedStatement.setString(3, turma.getHorario());
+			preparedStatement.setString(4, turma.getDescTurma());
+			preparedStatement.setInt(5, turma.getId());
+
+	
+			preparedStatement.executeUpdate();
+			con.commit();			
+			isSalvo = true;
+			
+		}
+		catch(Exception e){
+			
+			System.out.println("Erro ao EDITAR turma: " + e.getMessage());
+			isSalvo = false;			
+				
+		}
+		
+		return isSalvo;
+	}
+		
+	
+	public boolean deletarTurma(long id) {
+		boolean isSalvo = false;
+		
+		 String query = "delete from turma where id = ?";
+	
+		
+		try {
+			
+			con.setAutoCommit(false);
+			preparedStatement = con.prepareStatement(query);
+			preparedStatement.setLong(1,id);
+
+			preparedStatement.execute();
+			con.commit();			
+			isSalvo = true;
+			
+		}
+		catch(Exception e){
+			
+			System.out.println("Erro ao DELETAR turma:" + e.getMessage());
+			isSalvo = false;			
+				
+		}
+		
+		return isSalvo;
+	}
+
+	public LocalDate convertToLocalDateViaSqlDate(Date dateToConvert) {
+	    return new java.sql.Date(dateToConvert.getTime()).toLocalDate();
+	}
 }

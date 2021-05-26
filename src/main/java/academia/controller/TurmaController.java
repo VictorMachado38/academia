@@ -17,7 +17,7 @@ public class TurmaController {
 		List<Turma> turmas;
 		return turmas = turmaDao.listarTurma();
 		}
-	/*
+	
 	public boolean salvarTurma(Turma turma) {
 		turmaDao = new TurmaDao();
 		boolean isSalvo = turmaDao.salvarTurma(turma);
@@ -39,7 +39,7 @@ public class TurmaController {
 			
 	}
 	
-*/
+
 	public boolean salvarTurmaComAlunosEProfessor(Turma turma,Professor professor) throws SQLException {
 		turmaDao = new TurmaDao();
 		boolean isSalvo = turmaDao.salvarTurmaComAlunosEProfessor(turma,professor);
