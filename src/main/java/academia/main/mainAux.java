@@ -397,6 +397,7 @@ public class mainAux {
 	}
 
 	public void editarAluno(int num, int id) {
+		
 		Aluno alunoEditado = new Aluno();
 		
 		List<Aluno> funcionarios = alunoController.listarAlunos();
@@ -430,7 +431,7 @@ public class mainAux {
 		listAlunoAllAux();
 
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Qual o ID da aluno aque voce quer deletar ?");
+		System.out.println("Qual o ID do aluno aque voce quer deletar ?");
 		int id = sc.nextInt();
 
 		alunoController.deletarAluno(id);
@@ -446,10 +447,109 @@ public class mainAux {
 			System.out.println("Id: " + atual.getId());
 			System.out.println("Nome do plano: " + atual.getNomeDoPlano());
 			System.out.println("Valor do Plano R$" + atual.getValor());
+			System.out.println("Descrição do plano: " + atual.getDescDoPlano());
 
 			System.out.println("\n\n");
 		}
 
 	}
 
+	public void salvarAlunoComPlano(int num) {
+		
+		Aluno aluno = new Aluno();
+		aluno.setNome("Aluno com plano" + num);
+		aluno.setDataNascimento(LocalDate.of(2005, 05, 25));
+		aluno.setEndereco("Endereçi do professor" + num);
+		aluno.setTelefone("(62)98455-8987");
+		aluno.setEmail("alunoComPlanp" + num + "@unialfa.com");
+		aluno.setSexo("Masculico");
+		aluno.setDataCadastro(LocalDate.of(2001, 05, 15));
+		aluno.setMatricula(40028922);
+
+		Plano plano1 = new Plano();
+		Plano plano2 = new Plano();
+		
+		plano1.setNomeDoPlano("Plano 1");
+		plano1.setDescDoPlano("O plano um tem direito a fazer tudo");
+		plano1.setValor(999.50);;
+		
+		plano2.setNomeDoPlano("Plano 2");
+		plano2.setDescDoPlano("O plano dois tem direito a fazer NADA");
+		plano2.setValor(0.99);;
+		
+		List<Plano> planos = new ArrayList();
+		
+		planos.add(plano1);
+		planos.add(plano2);
+	
+
+		aluno.setPlano(planos);
+
+		try {
+			alunoController.salvarAlunoComPlano(aluno);
+			System.out.println("--------Aluno com Plano foi adicionado------------");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+	public void addPlano(int num, Double valor) {
+		Plano plano = new Plano();
+		
+		plano.setNomeDoPlano("Plano de número "+ num);
+		plano.setDescDoPlano("Descrição do do plano "+num);
+		plano.setValor(valor);
+		
+		planoController.salvarPlano(plano);
+		
+		System.out.println("--------Plano adicionado------------");
+	} 
+
+	public void deletarPlano() {
+		
+		listPlanoAux();
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Qual o ID do plano que você quer deletar ?");
+		int id = sc.nextInt();
+		
+		planoController.deletarPlano(id);
+		
+		System.out.println("--------PLANO COM O ID " + id + " FOI DELETADO! ");
+		System.out.println(" | '-' | ");
+		
+		
+	}
+
+	public void editarPlano(int num, Double valor, int id) {
+		
+		Plano planoEditado = new Plano();
+		
+		List<Plano> planos = planoController.listarPlanos();
+		for (Iterator iterator = planos.iterator(); iterator.hasNext();) {
+			Plano plano2 = (Plano) iterator.next();
+			
+			if (plano2.getId() == id) {
+				planoEditado = plano2;
+			}
+
+		}
+
+		planoEditado.setNomeDoPlano("Plano editado número: " + num);
+		planoEditado.setDescDoPlano("Descrição do plano editado número "+ num);
+		planoEditado.setValor(valor);
+		
+		
+		
+		planoController.editarPlano(planoEditado);
+		
+		System.out.println("--------Plano foi editado------------");
+
+	}
+
+	
+	
 }

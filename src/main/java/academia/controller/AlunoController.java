@@ -1,9 +1,11 @@
 package academia.controller;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import academia.model.Aluno;
 import academia.model.dao.AlunoDao;
+import academia.model.dao.ProfessorDao;
 
 public class AlunoController {
 
@@ -34,6 +36,12 @@ public class AlunoController {
 		boolean isSalvo = alunoDao.deletarAluno(id);
 		return isSalvo;
 
+	}
+	
+	public boolean salvarAlunoComPlano(Aluno aluno) throws SQLException {
+		alunoDao = new AlunoDao();
+		boolean isSalvo = alunoDao.salvarAlunoComPlano(aluno);
+		return isSalvo;
 	}
 
 }

@@ -16,7 +16,7 @@ public class PlanoController {
 		return planos = planoDao.listarPlanos();
 	}
 
-	/*
+	
 	public boolean salvarPlano(Plano plano) {
 		planoDao = new PlanoDao();
 		boolean isSalvo = planoDao.salvarPlano(plano);
@@ -37,6 +37,6 @@ public class PlanoController {
 		return isSalvo;
 
 	}
-	*/
+	
 
 }

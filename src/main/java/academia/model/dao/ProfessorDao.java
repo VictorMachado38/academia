@@ -109,7 +109,6 @@ public class ProfessorDao {
 					preparedStatement = con.prepareStatement(queryModalidade);
 					preparedStatement.setString(1, modalidade.getNome());
 					preparedStatement.setString(2, modalidade.getDescricao());
-					
 					preparedStatement.setInt(3, idProfessor);
 					
 					preparedStatement.execute();
@@ -140,7 +139,6 @@ public class ProfessorDao {
 		
 	}
 	
-
 	public boolean salvarProfessor(Professor professor) {
 		boolean isSalvo = false;
 
@@ -245,7 +243,6 @@ public class ProfessorDao {
 		
 		return isSalvo;
 	}
-	
 	
 	public LocalDate convertToLocalDateViaSqlDate(Date dateToConvert) {
 	    return new java.sql.Date(dateToConvert.getTime()).toLocalDate();

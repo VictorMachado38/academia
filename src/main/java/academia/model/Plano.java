@@ -6,7 +6,8 @@ public class Plano {
 
 	private int id;
 	private String nomeDoPlano;
-	private BigDecimal valor;
+	private Double valor;
+	private String descDoPlano;
 	private int idAluno;
 
 	public Plano() {
@@ -29,12 +30,12 @@ public class Plano {
 		this.nomeDoPlano = nomeDoPlano;
 	}
 
-	public BigDecimal getValor() {
+	public Double getValor() {
 		return valor;
 	}
 	
 
-	public void setValor(BigDecimal valor) {
+	public void setValor(Double valor) {
 		this.valor = valor;
 	}
 
@@ -46,5 +47,14 @@ public class Plano {
 	public void setIdAluno(int idAluno) {
 		this.idAluno = idAluno;
 	}
+
+	public String getDescDoPlano() {
+		return descDoPlano;
+	}
+
+	public void setDescDoPlano(String descDoPlano) {
+		this.descDoPlano = descDoPlano;
+	}
+	
 
 }

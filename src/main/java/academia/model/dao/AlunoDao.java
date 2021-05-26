@@ -3,6 +3,7 @@ package academia.model.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -59,6 +60,87 @@ public class AlunoDao {
 		
 	}
 
+	public boolean salvarAlunoComPlano(Aluno aluno) throws SQLException {
+		boolean isSalvo = false;
+		String queryProfessor = "insert into aluno (nome,dataNascimento,endereco,telefone,email,sexo,dataCadastro,matricula)"
+				+ "values (?,?,?,?,?,?,?,?);";
+		
+		String queryModalidade = "insert into plano (nomeDoPlano,descDoPlano,valor,idAluno)"
+				+ "VALUES (?,?,?,?)";
+		
+		
+		try {
+			con.setAutoCommit(false);
+			
+			preparedStatement = con.prepareStatement(queryProfessor);
+			preparedStatement.setString(1, aluno.getNome());
+			preparedStatement.setDate(2, java.sql.Date.valueOf(aluno.getDataNascimento()) );
+			preparedStatement.setString(3, aluno.getEndereco());
+			preparedStatement.setString(4, aluno.getTelefone());
+			preparedStatement.setString(5,aluno.getEmail());
+			preparedStatement.setString(6, aluno.getSexo());
+			preparedStatement.setDate(7 ,java.sql.Date.valueOf(aluno.getDataCadastro()) );
+			preparedStatement.setInt(8, aluno.getMatricula());
+			
+			preparedStatement.execute();
+			statement = con.createStatement();
+			int idTemp = 0;
+			
+			try {
+				ResultSet set = statement.executeQuery("select last_insert_id() as id");
+				while (set.next()) {
+					idTemp = set.getInt("id");
+					
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				con.rollback();
+			}
+			final int idAluno = idTemp;
+			
+			
+//			for (int i = 0; i < pessoa.getEnderecos().size(); i++) {
+//				Endereco endereco = pessoa.getEnderecos().get(i);
+//				
+//			}
+			
+			
+			aluno.getPlano().forEach(plano ->{
+				try {
+					preparedStatement = con.prepareStatement(queryModalidade);
+					preparedStatement.setString(1, plano.getNomeDoPlano());
+					preparedStatement.setString(2, plano.getDescDoPlano());
+					preparedStatement.setDouble(3, plano.getValor());
+					preparedStatement.setInt(4, idAluno);
+					
+					preparedStatement.execute();
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					try {
+						con.rollback();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			});
+			
+			con.commit();
+			isSalvo = true;
+			
+			
+		} catch (Exception e) {
+			System.err.println("Erro ao inserir salvarAlunoComPlano(): ERRO: " +  e.getMessage());
+			isSalvo = false;
+			con.rollback();
+		}
+		
+		return isSalvo;
+		
+	}
+	
 	public boolean salvarAluno(Aluno aluno) {
 		boolean isSalvo = false;
 

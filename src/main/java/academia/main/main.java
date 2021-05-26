@@ -52,7 +52,15 @@ public class main {
 		//	mainAux.editarAluno(77, 3);
 		// 	mainAux.deletarAluno();
 		
-		mainAux.listPlanoAux();
+		
+		//	mainAux.listPlanoAux();
+		//	mainAux.salvarAlunoComPlano(10);
+		//	mainAux.addPlano(50, 50.0); //Aqui recebe um INT e um Double o int vai para o nome do plano (para ajduar nos testes) e o Dolve é o valor do plano;
+		//	mainAux.editarPlano(71, 888.88, 5); //Aqui recebe INT = parecer no nome do banco /DOUBLE = Novo valor do plano / INT = id do plano que ira ser editado;
+		//	mainAux.deletarPlano();
+		
+		
+		
 		
 		
 		
