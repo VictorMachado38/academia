@@ -13,6 +13,7 @@ import academia.controller.ModalidadeController;
 import academia.controller.PessoaController;
 import academia.controller.PlanoController;
 import academia.controller.ProfessorController;
+import academia.controller.TurmaController;
 import academia.model.*;
 
 public class mainAux {
@@ -23,8 +24,9 @@ public class mainAux {
 	FuncionarioController funcionarioController = new FuncionarioController();
 	AlunoController alunoController = new AlunoController();
 	PlanoController planoController = new PlanoController();
+	TurmaController turmaController = new TurmaController();
 
-	public void listPessoaAllAux() {
+	public void listarPessoas() {
 		List<Pessoa> pessoas = pessoaContorller.listarPessoas();
 		for (Pessoa atual : pessoas) {
 			System.out.println("Id: " + atual.getId());
@@ -91,7 +93,7 @@ public class mainAux {
 
 	public void delearPessoa() {
 
-		listPessoaAllAux();
+		listarPessoas();
 
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Qual o ID da pessoa aque voce quer deletar ?");
@@ -104,7 +106,7 @@ public class mainAux {
 
 	}
 
-	public void listProfessoresAllAux() {
+	public void listarProfessores() {
 		List<Professor> professores = professorController.listarProfessores();
 		for (Professor atual : professores) {
 			System.out.println("----------Professor-----------");
@@ -164,7 +166,7 @@ public class mainAux {
 
 	public void delearProfessor() {
 
-		listProfessoresAllAux();
+		listarProfessores();
 
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Qual o ID do profrssor aque voce quer deletar ?");
@@ -213,7 +215,7 @@ public class mainAux {
 
 	}
 
-	public void listModalidadeAllAux() {
+	public void listarModalidades() {
 		List<Modalidade> modalidades = modalidadeController.listarModalidades();
 		for (Modalidade atual : modalidades) {
 			System.out.println("Id: " + atual.getIdModalidade());
@@ -259,7 +261,7 @@ public class mainAux {
 
 	public void delearModalidades() {
 
-		listModalidadeAllAux();
+		listarModalidades();
 
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Qual o ID da modalidade aque voce quer deletar ?");
@@ -272,7 +274,7 @@ public class mainAux {
 
 	}
 
-	public void listFuncionarioAllAux() {
+	public void listarFuncionarios() {
 		List<Funcionario> funcionarios = funcionarioController.listarFuncionarios();
 		for (Funcionario atual : funcionarios) {
 			System.out.println("Id: " + atual.getId());
@@ -347,7 +349,7 @@ public class mainAux {
 
 	public void deletarFuncionario() {
 
-		listFuncionarioAllAux();
+		listarFuncionarios();
 
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Qual o ID da funcionario aque voce quer deletar ?");
@@ -360,7 +362,8 @@ public class mainAux {
 
 	}
 
-	public void listAlunoAllAux() {
+	public void listarAlunos() {
+		
 		List<Aluno> alunos = alunoController.listarAlunos();
 		for (Aluno atual : alunos) {
 			System.out.println("Id: " + atual.getId());
@@ -428,7 +431,7 @@ public class mainAux {
 
 	public void deletarAluno() {
 
-		listAlunoAllAux();
+		listarAlunos();
 
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Qual o ID do aluno aque voce quer deletar ?");
@@ -441,7 +444,7 @@ public class mainAux {
 
 	}
 
-	public void listPlanoAux() {
+	public void listarPlanos() {
 		List<Plano> planos = planoController.listarPlanos();
 		for (Plano atual : planos) {
 			System.out.println("Id: " + atual.getId());
@@ -510,7 +513,7 @@ public class mainAux {
 
 	public void deletarPlano() {
 		
-		listPlanoAux();
+		listarPlanos();
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Qual o ID do plano que você quer deletar ?");
@@ -550,6 +553,80 @@ public class mainAux {
 
 	}
 
+	public void listarTurmas() {
+		
+		List<Turma> turmas = turmaController.listarTurmas();
+		for(Turma atual: turmas) {
+			
+			System.out.println("ID:" + atual.getId());
+			System.out.println("Nome da turma: " + atual.getNome());
+			System.out.println("Descrição da turma: " + atual.getDescTurma());
+			System.out.println("Horario: " + atual.getHorario());
+			System.out.println("Maximo de alunos: " + atual.getMaxAluno());
+			
+			System.out.println("\n\n");
+			
+		}
+		
+	}
 	
-	
+	public void salvarTurmaComAlunosEProfessor(int num,int maxAlnos) {
+
+		Turma turma = new Turma();
+		turma.setNome("Turma" + num);
+		turma.setMaxAluno(maxAlnos);
+		turma.setHorario("Horario add com turma");
+		turma.setDescTurma("Descrição da turma"+num);
+
+		Aluno aluno = new Aluno();
+		Aluno aluno2 = new Aluno();
+
+		aluno.setNome("Aluno " + num);
+		aluno.setDataNascimento(LocalDate.of(2005, 05, 15));
+		aluno.setEndereco("Rua com o numero " + num);
+		aluno.setTelefone("(62)98765-8547");
+		aluno.setEmail("Aluno" + num + "@pessoaT.com");
+		aluno.setSexo("Masculico");
+		aluno.setDataCadastro(LocalDate.of(2001, 05, 15));
+		aluno.setMatricula(555555555);
+		
+		aluno2.setNome("Aluno " + num);
+		aluno2.setDataNascimento(LocalDate.of(2005, 05, 15));
+		aluno2.setEndereco("Rua 611 Qd. 511");
+		aluno2.setTelefone("(62)98765-8547");
+		aluno2.setEmail("Aluno" + num + "@pessoaT.com");
+		aluno2.setSexo("Masculico");
+		aluno2.setDataCadastro(LocalDate.of(2001, 05, 15));
+		aluno2.setMatricula(77777777);
+		
+
+		List<Aluno> alunos = new ArrayList();
+		alunos.add(aluno);
+		alunos.add(aluno2);
+
+		turma.setAlunos(alunos);
+		
+		Professor professor = new Professor();
+		professor.setNome("Profaaaaaaaaassor " + num);
+		professor.setDataNascimento(LocalDate.of(2005, 05, 15));
+		professor.setEndereco("Rua 611 Qd. 511");
+		professor.setTelefone("(62)98765-8547");
+		professor.setEmail("professor" + num + "@professorT.com");
+		professor.setSexo("Masculico");
+		professor.setDataCadastro(LocalDate.of(2001, 05, 15));
+
+		
+		
+
+		try {
+			turmaController.salvarTurmaComAlunosEProfessor(turma,professor);
+			//professorController.salvarProfessroComModalidades(professor);
+			System.out.println("--------Turma com alunos e professor adicionado------------");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
 }

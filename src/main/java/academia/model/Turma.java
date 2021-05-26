@@ -4,30 +4,33 @@ import java.util.List;
 
 public class Turma {
 
-	private long id;
-	private String nome;
-	
-	private long idProfessor; //esse atributo será uma chave estrageneria 
-	
-	private int maxAluno;
-	
-	private Horario horario;
-	
-	private int vagas;
-	
-	private List<Aluno> alunos;
+	private int id;
 
+	private String nome;
+
+	private int idProfessor; // esse atributo será uma chave estrageneria
+
+	private int maxAluno;
+
+	private String horario;
+
+	private String descTurma;
 	
+
+	// private int vagas;
+
+	private List<Aluno> alunos;
 	
+
 	public Turma() {
 		super();
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -39,11 +42,11 @@ public class Turma {
 		this.nome = nome;
 	}
 
-	public long getIdProfessor() {
+	public int getIdProfessor() {
 		return idProfessor;
 	}
 
-	public void setIdProfessor(long idProfessor) {
+	public void setIdProfessor(int idProfessor) {
 		this.idProfessor = idProfessor;
 	}
 
@@ -55,20 +58,20 @@ public class Turma {
 		this.maxAluno = maxAluno;
 	}
 
-	public Horario getHorario() {
+	public String getHorario() {
 		return horario;
 	}
 
-	public void setHorario(Horario horario) {
+	public void setHorario(String horario) {
 		this.horario = horario;
 	}
 
-	public int getVagas() {
-		return vagas;
+	public String getDescTurma() {
+		return descTurma;
 	}
 
-	public void setVagas(int vagas) {
-		this.vagas = vagas;
+	public void setDescTurma(String descTurma) {
+		this.descTurma = descTurma;
 	}
 
 	public List<Aluno> getAlunos() {
@@ -78,10 +81,6 @@ public class Turma {
 	public void setAlunos(List<Aluno> alunos) {
 		this.alunos = alunos;
 	}
-	
-	
-	
-	
 	
 
 }

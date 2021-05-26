@@ -113,7 +113,8 @@ public class ProfessorDao {
 					
 					preparedStatement.execute();
 					
-				} catch (SQLException e) {
+				}
+				catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					try {
