@@ -1,24 +1,36 @@
 package academia.model;
 
 public class SalaDeAula {
-	
-	private long idSaldadeAula;
+
+	private int id;
 	private int numero;
+	private int idTurma;
+
 	
 	
-	public long getIdSaldadeAula() {
-		return idSaldadeAula;
+
+	public int getId() {
+		return id;
 	}
-	public void setIdSaldadeAula(long idSaldadeAula) {
-		this.idSaldadeAula = idSaldadeAula;
+
+	public void setId(int id) {
+		this.id = id;
 	}
+
 	public int getNumero() {
 		return numero;
 	}
+
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
-	
-	
+
+	public int getIdTurma() {
+		return idTurma;
+	}
+
+	public void setIdTurma(int idTurma) {
+		this.idTurma = idTurma;
+	}
 
 }

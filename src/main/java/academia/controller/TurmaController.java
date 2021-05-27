@@ -3,6 +3,7 @@ package academia.controller;
 import academia.model.dao.ProfessorDao;
 import academia.model.dao.TurmaDao;
 import academia.model.Professor;
+import academia.model.SalaDeAula;
 import academia.model.Turma;
 
 import java.sql.SQLException;
@@ -43,6 +44,12 @@ public class TurmaController {
 	public boolean salvarTurmaComAlunosEProfessor(Turma turma,Professor professor) throws SQLException {
 		turmaDao = new TurmaDao();
 		boolean isSalvo = turmaDao.salvarTurmaComAlunosEProfessor(turma,professor);
+		return isSalvo;
+	}
+	
+	public boolean salvarTurmaComAlunosEProfessorESalaDeAula(Turma turma,Professor professor,SalaDeAula salaDeAula) throws SQLException {
+		turmaDao = new TurmaDao();
+		boolean isSalvo = turmaDao.salvarTurmaComAlunosEProfessorESalaDeAula(turma,professor,salaDeAula);
 		return isSalvo;
 	}
 }

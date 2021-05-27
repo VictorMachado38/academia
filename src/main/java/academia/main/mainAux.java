@@ -13,6 +13,7 @@ import academia.controller.ModalidadeController;
 import academia.controller.PessoaController;
 import academia.controller.PlanoController;
 import academia.controller.ProfessorController;
+import academia.controller.SalaDeAulaController;
 import academia.controller.TurmaController;
 import academia.model.*;
 
@@ -25,6 +26,7 @@ public class mainAux {
 	AlunoController alunoController = new AlunoController();
 	PlanoController planoController = new PlanoController();
 	TurmaController turmaController = new TurmaController();
+	SalaDeAulaController salaDeAulaController = new SalaDeAulaController();
 
 	public void listarPessoas() {
 		List<Pessoa> pessoas = pessoaContorller.listarPessoas();
@@ -607,7 +609,7 @@ public class mainAux {
 		turma.setAlunos(alunos);
 		
 		Professor professor = new Professor();
-		professor.setNome("Profaaaaaaaaassor " + num);
+		professor.setNome("Profesorr " + num);
 		professor.setDataNascimento(LocalDate.of(2005, 05, 15));
 		professor.setEndereco("Rua 611 Qd. 511");
 		professor.setTelefone("(62)98765-8547");
@@ -672,7 +674,7 @@ public class mainAux {
 		listarTurmas();
 
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Qual o ID do turma aque voce quer deletar ?");
+		System.out.println("Qual o ID do turma você quer deletar ?");
 		int id = sc.nextInt();
 
 		turmaController.deletarTurma(id);
@@ -681,4 +683,134 @@ public class mainAux {
 		System.out.println(" | '-' | ");
 
 	}
+	
+	public void listarSalaDeAulas() {
+		
+		List<SalaDeAula> salaDeAulas = salaDeAulaController.listarSalaDeAulas();
+				for(SalaDeAula atual: salaDeAulas) {
+			
+			System.out.println("ID:" + atual.getId());
+			System.out.println("Número da sala: " + atual.getNumero());
+			System.out.println("ID da turma vinculada com a sala: " + atual.getIdTurma());
+		
+			System.out.println("\n\n");
+			
+		}
+		
+	}
+	
+	public void addSalaDeAula(int numSala, int IdTurma) {
+		
+		SalaDeAula salaDeAula = new SalaDeAula();
+		salaDeAula.setNumero( numSala);
+		salaDeAula.setIdTurma(IdTurma);
+
+		salaDeAulaController.salvarSalaDeAula(salaDeAula);
+
+		System.out.println("--------Sala de aula adicionada------------");
+
+	}
+
+	public void editarSalaDeAula(int NovoNum,int NovoIdTurma ,int id) {
+
+		SalaDeAula salaDeAulaEditada = new SalaDeAula();
+
+		List<SalaDeAula> salaDeAulas = salaDeAulaController.listarSalaDeAulas();
+		for (Iterator iterator = salaDeAulas.iterator(); iterator.hasNext();) {
+			SalaDeAula salaDeAula2 = (SalaDeAula) iterator.next();
+			if (salaDeAula2.getId() == id) {
+				salaDeAulaEditada = salaDeAula2;
+			}
+
+		}
+		
+		salaDeAulaEditada.setNumero(NovoNum);;
+		salaDeAulaEditada.setIdTurma(NovoIdTurma);
+		
+		salaDeAulaController.editarSalaDeAula(salaDeAulaEditada);
+
+
+		
+		
+		System.out.println("--------Sala de aula foi editada------------");
+
+	}
+
+	public void delearSalaDeAula() {
+
+		listarSalaDeAulas();
+
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Qual o ID do Sala de aula você quer deletar ?");
+		int id = sc.nextInt();
+
+		salaDeAulaController.deletarSalaDeAula(id);
+
+		System.out.println("--------SALA DE AULA COM O ID " + id + " DELETADO! ");
+		System.out.println(" | '-' | ");
+
+	}
+
+	public void salvarTurmaComAlunosEProfessorESalaDeAula(int num,int maxAlnos, int numeroDaSala) {
+
+		Turma turma = new Turma();
+		turma.setNome("Turma" + num);
+		turma.setMaxAluno(maxAlnos);
+		turma.setHorario("Horario add com turma");
+		turma.setDescTurma("Descrição da turma"+num);
+
+		Aluno aluno = new Aluno();
+		Aluno aluno2 = new Aluno();
+
+		aluno.setNome("Aluno " + num);
+		aluno.setDataNascimento(LocalDate.of(2005, 05, 15));
+		aluno.setEndereco("Rua com o numero " + num);
+		aluno.setTelefone("(62)98765-8547");
+		aluno.setEmail("Aluno" + num + "@pessoaT.com");
+		aluno.setSexo("Masculico");
+		aluno.setDataCadastro(LocalDate.of(2001, 05, 15));
+		aluno.setMatricula(555555555);
+		
+		aluno2.setNome("Aluno " + num);
+		aluno2.setDataNascimento(LocalDate.of(2005, 05, 15));
+		aluno2.setEndereco("Rua 611 Qd. 511");
+		aluno2.setTelefone("(62)98765-8547");
+		aluno2.setEmail("Aluno" + num + "@pessoaT.com");
+		aluno2.setSexo("Masculico");
+		aluno2.setDataCadastro(LocalDate.of(2001, 05, 15));
+		aluno2.setMatricula(77777777);
+		
+
+		List<Aluno> alunos = new ArrayList();
+		alunos.add(aluno);
+		alunos.add(aluno2);
+
+		turma.setAlunos(alunos);
+		
+		Professor professor = new Professor();
+		professor.setNome("Profesorr " + num);
+		professor.setDataNascimento(LocalDate.of(2005, 05, 15));
+		professor.setEndereco("Rua 611 Qd. 511");
+		professor.setTelefone("(62)98765-8547");
+		professor.setEmail("professor" + num + "@professorT.com");
+		professor.setSexo("Masculico");
+		professor.setDataCadastro(LocalDate.of(2001, 05, 15));
+
+		SalaDeAula salaDeAula = new SalaDeAula();
+		
+		salaDeAula.setNumero(numeroDaSala);
+		
+		
+
+		try {
+			
+			turmaController.salvarTurmaComAlunosEProfessorESalaDeAula(turma,professor,salaDeAula);
+			System.out.println("--------Turma com alunos e professor e sala de aula adicionado------------");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
 }

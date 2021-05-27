@@ -27,7 +27,7 @@ public class main {
 //		
 //		
 //			mainAux.listarProfessores();
-//			mainAux.addProfessor(10);
+//			mainAux.addProfessor(10); // Recebe um int que vai para o nome do professror para ajudar nos testes
 //			mainAux.editarProfessor(55,4); // tem passar um 2 int, um para ficar mais facil de olhar no banco e o um ID para editar
 //			mainAux.delearProfessor();
 //			mainAux.addProfessroComModalidades(70); //Tem que passar um int que vai ser adicionada no nome do PROFESSOR e e nome da MODALIDADE, para ajudar nos testes
@@ -49,7 +49,7 @@ public class main {
 //		
 //			mainAux.listarAlunos();
 //			mainAux.addAluno(33);
-//			mainAux.editarAluno(77, 3);
+//			mainAux.editarAluno(77, 3); // recebe dois INT um vai para o nome do aluno e o outro qual ID vai ser editado
 //		 	mainAux.deletarAluno();
 //	
 //			mainAux.listarPlanos();
@@ -61,88 +61,18 @@ public class main {
 //		
 //		
 //			mainAux.listarTurmas();
-//			mainAux.salvarTurmaComAlunosEProfessor(77, 99);
-//			mainAux.addTurma(14, 33);
-//			mainAux.editarTurma(15, 4);
+//			mainAux.salvarTurmaComAlunosEProfessor(77, 99); // Aqui recebe dois INT um vai para o nome do professor e do aluno e ou outro é a quantidade maxima de aluno
+//			mainAux.addTurma(14, 33); //Recebe dois INT o primeiro vai para o nome da turma e o segundo é a quantidade maxima de alunos
+//			mainAux.editarTurma(15, 4); //Recebe dois INT o primeiro vai para o nome da turma e o segundo é o ID da turma que vai ser editada
 //			mainAux.delearTurma();
-		
-		
-		
-			
-		
-		
-		
-		
-		
-		
-		/*
-		Professor professor = new Professor();
-		professor.setNome("Professor" );
-		professor.setDataNascimento(LocalDate.of(2005, 05, 25));
-		professor.setEndereco("aaaa");
-		professor.setTelefone("ddd");
-		professor.setEmail("pecccssoa@pessoaT.com");
-		professor.setSexo("Mascuxxxlico");
-		professor.setDataCadastro(LocalDate.of(2001, 05, 15));
-		
-		Modalidade modalidade = new Modalidade();
-		
-		modalidade.setNome("JUDO");
-		modalidade.setDescricao("AULA DA JUDO MUITO BOA");
-		
-		List<Modalidade> modalidades = new ArrayList();
-		modalidades.add(modalidade);
-		modalidades.add(modalidade);
-		
-		professor.setModalidade(modalidades);
-		
-		try {
-			professorController.salvarProfessroComModalidades(professor);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-			
-		
-		
-		
-		
-		PessoaController pessoaContorller = new PessoaController();
-		
-		Pessoa pessoa = new Pessoa();
-		pessoa.setNome("VICTOR ");
-		pessoa.setDataNascimento(LocalDate.of(2005, 05, 15));
-		pessoa.setEndereco("Rua 611 Qd. 511");
-		pessoa.setTelefone("(62)98765-8547");
-		pessoa.setEmail("pessoaT@pessoaT.com");
-		pessoa.setSexo("Masculico");
-		pessoa.setDataCadastro(LocalDate.of(2001, 05, 15));
-		
-		pessoaContorller.salvarPessoa(pessoa);
-
-		
-		System.out.println("--------Pessoa adicionada------------");
-		
-		
-		
-		List<Pessoa> pessoas = pessoaContorller.listarPessoas();
-		for(Pessoa atual: pessoas) {
-			System.out.println("Id: " +atual.getId());
-			System.out.println("Nome:" + atual.getNome());
-			System.out.println("Data de Nascimento: "+ atual.getDataNascimento().toString());
-			System.out.println("Endereço" + atual.getEndereco());
-			System.out.println("Email: "+ atual.getEmail());
-			System.out.println("Sexo: "+ atual.getSexo());
-			System.out.println("Data de nascimento: "+ atual.getDataCadastro().toString());
-			
-			System.out.println("\n\n");
-		}
-		*/
-	
-
-		
-		
+//		
+//		
+//			mainAux.listarSalaDeAulas();
+//			mainAux.addSalaDeAula(14, 1); // Aqui vai são 2 INT o primeiro corresponde ao numero da sala e o segundo ao ID da turma vinculada
+//			mainAux.editarSalaDeAula(55,1,3); //Aqui recebe 3 int primeiro para o novo numero, segundo para o novo Id da turma, e o terceiro para o ID que quero editar
+//			mainAux.delearSalaDeAula();
+//		
+//			mainAux.salvarTurmaComAlunosEProfessorESalaDeAula(2525, 50, 99); // Esse ultimo eu fiz vinculando tudo!
 
 	}
 
