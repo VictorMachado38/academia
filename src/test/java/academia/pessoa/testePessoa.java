@@ -1,4 +1,4 @@
-package academia.aluno;
+package academia.pessoa;
 
 import static org.junit.jupiter.api.Assertions.*;
 

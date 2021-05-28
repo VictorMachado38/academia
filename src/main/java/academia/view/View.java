@@ -1,4 +1,4 @@
-package academia.main;
+package academia.view;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -17,7 +17,7 @@ import academia.controller.SalaDeAulaController;
 import academia.controller.TurmaController;
 import academia.model.*;
 
-public class mainAux {
+public class View {
 
 	PessoaController pessoaContorller = new PessoaController();
 	ProfessorController professorController = new ProfessorController();
