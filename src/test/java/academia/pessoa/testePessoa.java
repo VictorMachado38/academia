@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import academia.controller.PessoaController;
 import academia.model.Pessoa;
+import academia.model.Turma;
 
 class testePessoa {
 
@@ -41,5 +42,14 @@ class testePessoa {
 		assertTrue(pessoaController.salvarPessoa(pessoa));
 		
 	}
+	
+	@Test
+	  void list() {
+//	        listar Pessoa
+		List<Pessoa> pessoas = pessoaController.listarPessoas();
+        assertTrue(pessoas.size()>0);
+
+
+	    }
 
 }

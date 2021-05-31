@@ -16,7 +16,6 @@ public class main {
 
 	public static void main(String[] args) {
 	
-		ProfessorController professorController = new ProfessorController();
 		View view = new View();
 
 			view.addPessoa(22); // OK Tem que passar um int que vai ser adicionada no nome da PESSOA, para ajudar nos testes

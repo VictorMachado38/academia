@@ -15,6 +15,11 @@ public class FuncionarioController {
 		return pessoas = funcionarioDao.listarFuncionarios();
 	}
 
+	public Funcionario create() {
+		Funcionario funcionario = new Funcionario();
+		return funcionario;
+			
+	}
 	public boolean salvarFuncionario(Funcionario pessoa) {
 		funcionarioDao = new FuncionarioDao();
 		boolean isSalvo = funcionarioDao.salvarFuncionario(pessoa);

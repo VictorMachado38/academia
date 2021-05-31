@@ -26,6 +26,12 @@ public class TurmaController {
 			
 	}
 	
+	public Turma create() {
+		Turma turma = new Turma();
+		return turma;
+			
+	}
+	
 	public boolean editarTurma(Turma turma) {
 		turmaDao = new TurmaDao();
 		boolean isSalvo = turmaDao.editarTurma(turma);
@@ -51,5 +57,10 @@ public class TurmaController {
 		turmaDao = new TurmaDao();
 		boolean isSalvo = turmaDao.salvarTurmaComAlunosEProfessorESalaDeAula(turma,professor,salaDeAula);
 		return isSalvo;
+	}
+
+	public Turma show(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

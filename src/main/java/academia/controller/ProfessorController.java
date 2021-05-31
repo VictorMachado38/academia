@@ -18,6 +18,12 @@ public class ProfessorController {
 		 return professor = professorDao.listarProfessor();
 //		 return null;
 	}
+	
+	public Professor create() {
+		Professor professor = new Professor();
+		return professor;
+			
+	}
 
 	public boolean salvarProfessor(Professor professor) {
 		professorDao = new ProfessorDao();

@@ -15,6 +15,12 @@ public class ModalidadeController {
 		List<Modalidade> modalidades;
 		return modalidades = modalidadeDao.listarModalidade();
 		}
+
+	public Modalidade create() {
+		Modalidade modalidade = new Modalidade();
+		return modalidade;
+			
+	}
 	
 	public boolean salvarModalidade(Modalidade modalidade) {
 		modalidadeDao = new ModalidadeDao();
@@ -35,6 +41,11 @@ public class ModalidadeController {
 		boolean isSalvo = modalidadeDao.deletarModalidade(id);
 		return isSalvo;
 			
+	}
+
+	public Modalidade show(int idModalidade) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
